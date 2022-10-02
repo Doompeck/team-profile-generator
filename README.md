@@ -53,7 +53,7 @@ n/a
 ​
 ## Preview Video
 ​
-
+[Walkthrough Video](https://watch.screencastify.com/v/3a78L1IKL4M9BAubg5Zk)
 ​
 ## GitHub userName
 ​
