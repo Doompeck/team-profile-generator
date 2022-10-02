@@ -50,7 +50,34 @@ function runApp() {
   // gather manager data
   // inquirer prompt
   // then build a manager object
-  function addManager() {};
+  function addManager() {
+    inquirer.prompt ([
+        {
+            type:"input",
+            name: "managerName",
+            message: "What is the manager's name?"
+        },
+        {
+            type: "input",
+            name: "managerId",
+            message: "What is the manager's employee ID?"
+        },
+        {
+            type: "Input",
+            name: "managerEmail",
+            message: "What is the manger's email?"
+        },
+        {
+            type: "input",
+            name: "managerOfficeNumber",
+            message: "What is the manager's office number?"
+        }
+    ]).then(answers => {
+        const manager = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.managerOfficeNumber);
+        teamArray.push(manager);
+        createTeam();
+    });
+  };
 
   // gather engineer data
   // inquirer promopt
@@ -62,7 +89,7 @@ function runApp() {
   // then build an intern object
   function addIntern() {};
 
-  
+
 
   // generate the html and write it to a file (This should be built in a separate file)
 function htmlbuilder() {
