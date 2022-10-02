@@ -115,7 +115,7 @@ function runApp() {
       ])
       .then(answers => {
         const engineer = new Engineer(
-          answers.egineerName,
+          answers.engineerName,
           answers.engineerId,
           answers.engineerEmail,
           answers.engineerGithub
