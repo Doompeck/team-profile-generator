@@ -42,7 +42,7 @@ function runApp() {
             break;
 
           default:
-            htmlbuilder();
+            htmlBuilder();
         }
       })
   }
@@ -164,7 +164,7 @@ function runApp() {
   }
 
   // generate the html and write it to a file (This should be built in a separate file)
-  function htmlbuilder() {
+  function htmlBuilder() {
     console.log("Succesfully created Team!");
     fs.writeFileSync(outputPath, generateTeam(teamArray), "UTF-8");
   }

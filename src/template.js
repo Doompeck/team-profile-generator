@@ -1,6 +1,5 @@
-const Employee = require("../lib/employee");
-
 const generateTeam = team => {
+
 // generate manager html
     const generateManager = manager => {
         return `
@@ -11,7 +10,7 @@ const generateTeam = team => {
         </div>
         <div class="card-body">
             <ul class="list-group">
-                <li class="list-group-item">ID: ${manager.getID()}</li>
+                <li class="list-group-item">ID: ${manager.getId()}</li>
                 <li class="list-group-item">Email: <a href="mailto:${manager.getEmail()}">${manager.getEmail()}</a></li>
                 <li class="list-group-item">Office number: ${manager.getOfficeNumber()}</li>
             </ul>
@@ -20,6 +19,7 @@ const generateTeam = team => {
             `;
     };
 
+// Generate engineer html
     const generateEngineer = engineer => {
         return `
 <div class="card employee-card">
@@ -29,7 +29,7 @@ const generateTeam = team => {
         </div>
         <div class="card-body">
             <ul class="list-group">
-                <li class="list-group-item">ID: ${engineer.getID()}</li>
+                <li class="list-group-item">ID: ${engineer.getId()}</li>
                 <li class="list-group-item">Email: <a href="mailto:${engineer.getEmail()}">${engineer.getEmail()}</a></li>
                 <li class="list-group-item">GitHub: <a href="https://github.com/${engineer.getGithub()}" target="_blank" rel="noopener noreferrer">${engineer.getGithub()}</a></li>
             </ul>
@@ -38,6 +38,7 @@ const generateTeam = team => {
             `;
     };
 
+// generate Intern html
     const generateIntern = intern => {
         return `
 <div class="card employee-card">
@@ -47,7 +48,7 @@ const generateTeam = team => {
         </div>
         <div class="card-body">
             <ul class="list-group">
-                <li class="list-group-item">ID: ${intern.getID()}</li>
+                <li class="list-group-item">ID: ${intern.getId()}</li>
                 <li class="list-group-item">Email: <a href="mailto:${intern.getEmail()}">${intern.getEmail()}</a></li>
                 <li class="list-group-item">School: ${intern.getSchool()}</li>
             </ul>
@@ -60,18 +61,18 @@ const generateTeam = team => {
 
     html.push(
       team
-        .filter((emplyoee) => Employee.getRole() === "Manager")
+        .filter((employee) => employee.getRole() === "Manager")
         .map((manager) => generateManager(manager))
     );
     html.push(
       team
-        .filter((emplyoee) => Employee.getRole() === "Engineer")
+        .filter((employee) => employee.getRole() === "Engineer")
         .map((engineer) => generateEngineer(engineer))
         .join("")
     );
     html.push(
         team
-          .filter((emplyoee) => Employee.getRole() === "Intern")
+          .filter((employee) => employee.getRole() === "Intern")
           .map((intern) => generateIntern(intern))
           .join("")
       );
@@ -93,10 +94,25 @@ module.exports = team => {
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     </head>
+
     <body>
-        
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 jumobtron mb-3 team-heading bg-danger">
+                    <h1 class="text-center text-white">My Team</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="row team-area col-12 d-flex justify-content-center">
+                    ${generateTeam(team)}
+                </div>
+            </div>
+         </div>
     </body>
     </html>
-    `
+    `;
 
-}
+};
