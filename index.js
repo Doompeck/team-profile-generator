@@ -1,4 +1,4 @@
-// require inquirer
+// Setting all required external components.
 const Manager = require("./lib/manager");
 const Engineer = require("./lib/engineer");
 const Intern = require("./lib/intern");
@@ -9,11 +9,12 @@ const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 const generateTeam = require("./src/template");
 
-// create an empty array list to store employee objects
+// Creates and empty array to push each manager, engineer and intern into.
 teamArray = [];
 
 function runApp() {
-  // CreateTeam is the main menu prompt loop to keep you in the app until you have added all the employees you need.
+  // CreateTeam is the main menu prompt loop to keep you in the app until you have 
+  // added all the employees you need.
   function createTeam() {
     inquirer
       .prompt([
@@ -169,7 +170,9 @@ function runApp() {
     fs.writeFileSync(outputPath, generateTeam(teamArray), "UTF-8");
   }
 
+  // Call the createTeam function to initiate the prompts
   createTeam();
 }
 
+// Call the main function to initiate the app.
 runApp();
